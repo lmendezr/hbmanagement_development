@@ -1,0 +1,50 @@
+<li class='dropdown dark user-menu'>
+	<a class='dropdown-toggle' data-toggle='dropdown' data-hover="dropdown" href='#'>
+	<% if user_signed_in? %>
+		<img width="23" height="23" alt="<%=current_user.name%>" src="<%= asset_path( 'flatty/avatar.jpg' ) %>" />
+		<span class='user-name'><%=current_user.name%></span>
+
+	<% else %>
+		<img width="23" height="23" alt="Visitante" src="<%= asset_path( 'flatty/avatar.jpg' ) %>" />
+		<span class='user-name'>Visitante</span>
+	<% end %>
+	<b class='caret'></b>
+	</a>
+	<ul class='dropdown-menu'>
+		<ul class="nav">
+
+			<% if user_signed_in? %>
+				<li class=''>
+					<a href='<%= edit_user_registration_path %>'>
+						<i class='icon-cog'></i>
+						<span>Editar Cuenta</span>
+					</a>
+				</li>
+				<li><%= link_to ' Salir', destroy_user_session_path, :method=>'delete', class: "icon-signout" %></li>
+			
+			<% else %>
+				<li class=''>
+					<a href='<%= new_user_session_path %>'>
+						<i class='icon-signin'></i>
+						<span>Iniciar Sesión</span>
+					</a>
+				</li>
+				<li class=''>
+					<a href='<%= new_user_registration_path %>'>
+						<i class='icon-signin'></i>
+						<span>Abrir una Cuenta</span>
+					</a>
+				</li>
+			<% end %>
+			<% if current_user && current_user.admin? %>
+				<li class=''>
+					<a href='<%= users_path %>'>
+						<i class='icon-group'></i>
+						<span>Usuarios</span>
+					</a>
+				</li>
+			<% end %>
+
+		</ul>
+	</ul>
+</li>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @proyecto.nombre %> </h1>
+
+<p>
+  <strong>Gerente:</strong>
+  <%= @proyecto.nombre_gerente %>
+</p>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Areas</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proyecto.areas.each do |area| %>
+      <tr>
+        <td><%= area.nombre %></td>
+        <td><%= link_to 'Ver', area %></td>
+        <td><%= link_to 'Editar', edit_area_path(area) %></td>
+        <td><%= link_to 'Eliminar', area, method: :delete, data: { confirm: 'Estas seguro(a)?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Editar', edit_proyecto_path(@proyecto), class:'btn btn-success' %> 
+<%= link_to 'Regresar', proyectos_path, class:'btn btn-primary'  %>

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  descripcion: MyString
+  puntuaje_obtenido: 1
+  fecha_de_inicio: 2014-04-16 00:51:20
+  fecha_de_continuidad: 2014-04-16 00:51:20
+  duracion_selec: false
+  duracion_dias: 1
+  finalizada: false
+  expiracion_selec: false
+  expiracion_dias: 1
+  expirada: false
+  seccione_id: 
+
+two:
+  nombre: MyString
+  descripcion: MyString
+  puntuaje_obtenido: 1
+  fecha_de_inicio: 2014-04-16 00:51:20
+  fecha_de_continuidad: 2014-04-16 00:51:20
+  duracion_selec: false
+  duracion_dias: 1
+  finalizada: false
+  expiracion_selec: false
+  expiracion_dias: 1
+  expirada: false
+  seccione_id: 

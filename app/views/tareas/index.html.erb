@@ -1,0 +1,41 @@
+<h1>Tareas</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de continuidad</th>
+      <th>Finalizada</th>
+      <th>Expirada</th>
+      <th>Componente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tareas.each do |tarea| %>
+      <tr>
+        <td><%= tarea.nombre %></td>
+        <td><%= tarea.fecha_de_inicio %></td>
+        <td><%= tarea.fecha_de_continuidad %></td>
+        <td><%= tarea.finalizada %></td>
+        <td><%= tarea.expirada %></td>
+        <td><%= tarea.componente.nombre if tarea.componente %></td>
+        <td><%= link_to 'Ver', tarea %></td>
+        <% if current_user && current_user.admin? || current_user.manager? || current_user.client? %>
+          <td><%= link_to 'Editar', edit_tarea_path(tarea) %></td>
+        <% end %>
+        <% if current_user && current_user.admin? || current_user.manager? %>
+          <td><%= link_to 'Eliminar', tarea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user && current_user.admin? || current_user.manager? %>
+  <%= link_to 'Crear Tarea', new_tarea_path, class:'btn btn-primary' %>
+<% end %>

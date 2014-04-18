@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @tarea.nombre %> </h1>
+
+<p>
+  <strong>Fecha de inicio:</strong>
+  <%= @tarea.fecha_de_inicio %>
+</p>
+
+<p>
+  <strong>Fecha de continuidad:</strong>
+  <%= @tarea.fecha_de_continuidad %>
+</p>
+
+<p>
+  <strong>Duracion selec:</strong>
+  <%= @tarea.duracion_selec %>
+</p>
+
+<p>
+  <strong>Duracion dias:</strong>
+  <%= @tarea.duracion_dias %>
+</p>
+
+<p>
+  <strong>Finalizada:</strong>
+  <%= @tarea.finalizada %>
+</p>
+
+<p>
+  <strong>Expiracion selec:</strong>
+  <%= @tarea.expiracion_selec %>
+</p>
+
+<p>
+  <strong>Expiracion dias:</strong>
+  <%= @tarea.expiracion_dias %>
+</p>
+
+<p>
+  <strong>Expirada:</strong>
+  <%= @tarea.expirada %>
+</p>
+
+<p>
+  <strong>Componente:</strong>
+  <%= @tarea.componente.nombre if @tarea.componente %>
+</p>
+
+
+<%= link_to 'Editar',  edit_tarea_path(@tarea), class:'btn btn-success' %> 
+<%= link_to 'Regresar', tareas_path, class:'btn btn-primary' %>

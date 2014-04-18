@@ -1,0 +1,13 @@
+<%= simple_form_for(@area) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre, :required => true  %>
+    <%= f.association :proyecto, :required => true  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Guardar', class: "btn btn-success" %>
+    <%= link_to 'Cancelar', areas_path, class: "btn btn-danger"  %>
+  </div>
+<% end %>

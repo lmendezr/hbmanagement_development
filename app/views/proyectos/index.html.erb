@@ -1,0 +1,27 @@
+<h1>Proyectos</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Nombre gerente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proyectos.each do |proyecto| %>
+      <tr>
+        <td><%= proyecto.nombre %></td>
+        <td><%= proyecto.nombre_gerente %></td>
+        <td><%= link_to 'Ver', proyecto %></td>
+        <td><%= link_to 'Editar', edit_proyecto_path(proyecto) %></td>
+        <td><%= link_to 'Eliminar', proyecto, method: :delete, data: { confirm: 'Estas seguro(a)?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Crear Proyecto", new_proyecto_path, class: "btn btn-primary" %>

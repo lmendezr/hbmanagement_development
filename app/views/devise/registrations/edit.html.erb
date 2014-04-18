@@ -1,14 +1,86 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-  <%= f.input :password_confirmation, :required => false %>
-  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
-<% end %>
-<h3>Cancel my account</h3>
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-<%= link_to "Back", :back %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%= content_for?(:title) ? yield(:title) : "HB Management Development" %></title>
+	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "HB Management Development" %>">
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body class='contrast-red without-footer'>
+
+	<!-- Navigation Bar (header) -->
+	<header>
+
+		<!-- Navigation Bar leftmost icons -->
+		<nav class='navbar navbar-default'>
+			<a class='navbar-brand' href='/'>
+				<img width="81" height="21" class="logo" alt="HB Management & Development" src="<%= asset_path( 'flatty/logo.svg' ) %>" />
+				<img width="21" height="21" class="logo-xs" alt="HB" src="<%= asset_path( '/flatty/logo_xs.svg' ) %>" />
+			</a>
+			<a class='toggle-nav btn pull-left' href='#'>
+				<i class='icon-reorder'></i>
+			</a>
+
+			<!-- Navigation Bar rightmost icons -->
+			<ul class='nav'>
+				<li class='dropdown light only-icon'>
+					<a class='dropdown-toggle' data-toggle='dropdown' data-hover="dropdown" href='#'>
+						<i class='icon-cog'></i>
+					</a>
+					<%= render 'layouts/theme_dropdown' %>
+				</li>
+				<%= render 'layouts/notifications_dropdown' %>
+				<%= render 'layouts/user_dropdown' %>
+			</ul>
+			<form action='search_results.html' class='navbar-form navbar-right hidden-xs' method='get'>
+				<button class='btn btn-link icon-search' name='button' type='submit'></button>
+				<div class='form-group'>
+					<input value="" class="form-control" placeholder="Search..." autocomplete="off" id="q_header" name="q" type="text" />
+				</div>
+			</form>
+		</nav>
+	</header>
+
+	<div id='wrapper'>
+		<%= render 'layouts/side_bar' %>
+		<section id='content'>
+			<div class='container'>
+				<div class='row' id='content-wrapper'>
+					<div class='col-xs-12'>
+						<%= render 'layouts/messages' %>
+						<h2>Edit <%= resource_name.to_s.humanize %></h2>
+						<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+						<%= f.error_notification %>
+						<%= display_base_errors resource %>
+						<%= f.input :name, :autofocus => true %>
+						<%= f.input :email, :required => true %>
+						<%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+						<%= f.input :password_confirmation, :required => false %>
+						<%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+						<%= f.button :submit, 'Update', :class => 'btn-primary' %>
+						<% end %>
+						<h3>Cancel my account</h3>
+						<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+						<%= link_to "Back", :back %>
+					</div>
+				</div>
+				<footer id='footer'>
+					<div class='footer-wrapper'>
+						<div class='row'>
+							<div class='col-sm-6 text'>
+								Copyright © 2013 HB Management & Development
+							</div>
+							<div class='col-sm-6 buttons'>
+								<a class="btn btn-link" href="http://www.bublinastudio.com/flatty">Preview</a>
+								<a class="btn btn-link" href="https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N">Purchase</a>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<div id='main-nav-bg'></div>
+<nav id='main-nav'>
+  <div class='navigation'>
+    <div class='search'>
+      <form action='search_results.html' method='get'>
+        <div class='search-wrapper'>
+          <input value="" class="search-query form-control" placeholder="Buscar..." autocomplete="off" name="q" type="text" />
+          <button class='btn btn-link icon-search' name='button' type='submit'></button>
+        </div>
+      </form>
+    </div>
+    <ul class='nav nav-stacked'>
+      <li class=''>
+        <a href='/'>
+          <i class='icon-dashboard'></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      <% if current_user && current_user.admin? %>
+        <li class=''>
+          <a href='<%= proyectos_path %>'>
+            <i class='icon-money'></i>
+            <span>Proyectos</span>
+          </a>
+        </li>
+        <li class=''>
+          <a href='<%= areas_path %>'>
+            <i class=' icon-building'></i>
+            <span>Edificios/Areas</span>
+          </a>
+        </li>
+        <li class=''>
+          <a href='<%= secciones_path %>'>
+            <i class='icon-sitemap'></i>
+            <span>Secciones</span>
+          </a>
+        </li>
+        <li class=''>
+          <a href='<%= componentes_path %>'>
+            <i class='icon-lightbulb'></i>
+            <span>Componentes</span>
+          </a>
+        </li>
+        <li class=''>
+          <a href='<%= tareas_path %>'>
+            <i class='icon-tasks'></i>
+            <span>Tareas</span>
+          </a>
+        </li>
+      <% end %>
+
+      <% if current_user && current_user.manager? %>
+        <li class=''>
+          <a href='<%= tareas_path %>'>
+            <i class='icon-tasks'></i>
+            <span>Tareas</span>
+          </a>
+        </li>
+      <% end %>
+
+      <% if current_user && current_user.client? %>
+        <li class=''>
+          <a href='<%= tareas_path %>'>
+            <i class='icon-tasks'></i>
+            <span>Tareas</span>
+          </a>
+        </li>
+      <% end %>
+
+      <% if current_user && current_user.auditor? %>
+        <li class=''>
+          <a href='<%= tareas_path %>'>
+            <i class='icon-tasks'></i>
+            <span>Tareas</span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

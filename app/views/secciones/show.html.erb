@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @seccione.nombre %> </h1>
+
+<p>
+  <strong>Porcentaje componente:</strong>
+  <%= @seccione.porcentaje_componente %>
+</p>
+<p>
+  <strong>Valor obtenido:</strong>
+  <%= @seccione.valor_obtenido %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @seccione.area.nombre if @seccione.area %>
+</p>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seccione.componentes.each do |componente| %>
+      <tr>
+        <td><%= componente.nombre %></td>
+        <td><%= componente.descripcion %></td>
+        <td><%= link_to 'Ver', componente %></td>
+        <td><%= link_to 'Editar', edit_componente_path(componente) %></td>
+        <td><%= link_to 'Eliminar', componente, method: :delete, data: { confirm: 'Estas seguro(a)?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Editar', edit_seccione_path(@seccione), class:'btn btn-success' %> 
+<%= link_to 'Regresar', secciones_path, class:'btn btn-primary' %>

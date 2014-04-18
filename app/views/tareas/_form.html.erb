@@ -1,0 +1,21 @@
+<%= simple_form_for(@tarea) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre %>
+    <%= f.input :fecha_de_inicio %>
+    <%= f.input :fecha_de_continuidad %>
+    <%= f.input :duracion_selec %>
+    <%= f.input :duracion_dias %>
+    <%= f.input :finalizada %>
+    <%= f.input :expiracion_selec %>
+    <%= f.input :expiracion_dias %>
+    <%= f.input :expirada %>
+    <%= f.association :componente %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Guardar', class: "btn btn-success" %>
+    <%= link_to 'Cancelar', componentes_path, class: "btn btn-danger"  %>
+  </div>
+<% end %>

@@ -1,8 +1,67 @@
-<h2>Sign in</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.input :email, :autofocus => true %>
-  <%= f.input :password %>
-  <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
-<% end %>
-<%= render "devise/shared/links" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%= content_for?(:title) ? yield(:title) : "Hb Management Development" %></title>
+	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Hb Management Development" %>">
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<!-- this enables responsive features in browser -->
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+</head>
+<body class='contrast-red login contrast-background'>
+	<div class='middle-container'>
+		<div class='middle-row'>
+			<div class='middle-wrapper'>
+
+				<div class='login-container-header'>
+					<div class='container'>
+						<div class='row'>
+							<div class='col-sm-12'>
+								<div class='text-center'>
+									<img width="121" height="31" src="<%= asset_path( 'flatty/logo_lg.svg') %>" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class='login-container'>
+					<div class='container'>
+						<div class='row'>
+							<div class='col-sm-2 col-sm-offset-5'>
+								<h1 class='text-center title'>Iniciar Sesión</h1>
+								<%= render 'layouts/messages' %>
+								<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+								<div class='text-center form-group'>
+									<div class='controls with-icon-over-input'>
+										<%= f.input :email, :autofocus => true %>
+										<i class='icon-user text-muted'></i>
+									</div>
+								</div>
+								<div class='form-group'>
+									<div class='controls with-icon-over-input'>
+										<%= f.input :password %>
+										<i class='icon-lock text-muted'></i>
+									</div>
+								</div>
+								<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+
+								<%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+								<% end %>
+								<div class='text-center'>
+									<hr class='hr-normal'>
+									<%= render "devise/shared/links" %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

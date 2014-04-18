@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @componente.nombre %> </h1>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @componente.descripcion %>
+</p>
+
+<p>
+  <strong>Sección:</strong>
+  <%= @componente.seccione.nombre if @componente.seccione %>
+</p>
+
+<%= link_to 'Editar', edit_componente_path(@componente), class:'btn btn-success' %> 
+<%= link_to 'Regresar', componentes_path, class:'btn btn-primary' %>

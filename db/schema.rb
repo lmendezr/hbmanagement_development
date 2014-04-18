@@ -11,7 +11,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416022425) do
+ActiveRecord::Schema.define(version: 20140418111305) do
+
+  create_table "areas", force: true do |t|
+    t.string   "nombre"
+    t.integer  "proyecto_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "areas", ["proyecto_id"], name: "index_areas_on_proyecto_id", using: :btree
+
+  create_table "componentes", force: true do |t|
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.integer  "seccione_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "componentes", ["seccione_id"], name: "index_componentes_on_seccione_id", using: :btree
+
+  create_table "proyectos", force: true do |t|
+    t.string   "nombre",         limit: 45
+    t.string   "nombre_gerente", limit: 45
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "secciones", force: true do |t|
+    t.string   "nombre"
+    t.integer  "porcentaje_componente"
+    t.integer  "area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "valor_obtenido"
+  end
+
+  add_index "secciones", ["area_id"], name: "index_secciones_on_area_id", using: :btree
+
+  create_table "tareas", force: true do |t|
+    t.string   "nombre"
+    t.datetime "fecha_de_inicio"
+    t.datetime "fecha_de_continuidad"
+    t.boolean  "duracion_selec"
+    t.integer  "duracion_dias"
+    t.boolean  "finalizada"
+    t.boolean  "expiracion_selec"
+    t.integer  "expiracion_dias"
+    t.boolean  "expirada"
+    t.integer  "componente_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tareas", ["componente_id"], name: "index_tareas_on_componente_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
